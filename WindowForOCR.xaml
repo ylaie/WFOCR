@@ -1,0 +1,21 @@
+﻿<Window x:Class="WFOCR.WindowForOCR"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WFOCR"
+        mc:Ignorable="d"
+        Title="WindowForOCR" Height="500" Width="800" MinHeight="500" MinWidth="800">
+    <Grid>
+        <TextBox x:Name ="Filelocat" Height="25" Margin="95,10,95,0" Text="" VerticalAlignment="Top" TextChanged="TextBox_Filelocat" />
+
+        <TextBox Name="textout" Margin="10,70,10,10" TextWrapping="Wrap" IsReadOnly="True" Background="Silver" TextChanged="TextBox_Output" Text="ver 0.07b&#xA;&#xA; 导出功能暂不可用&#xA; 请使用复制&#xA;&#xA; ApiUrl地址错误会引发闪退&#xA;阿里云OCR Api :https://tysbgpu.market.alicloudapi.com/api/predict/ocr_general&#xA;&#xA;更新 : 添加了AppKey模式"/>
+
+        <Button x:Name="OpenFile" Content="浏览" Margin="0,10,10,0"  HorizontalAlignment="Right" Width="80" Height="25" VerticalAlignment="Top" Click="Button_Click_OpenFile"/>
+        <Button x:Name="Start" Content="分析" Margin="0,40,10,0" Click="Button_Click_Start" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80"/>
+        <Button x:Name="Output" Content="导出" Margin="0,0,20,20" RenderTransformOrigin="1,-0.021" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Click="Button_Click_Output"/>
+        <Label Content="文件路径/url:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.667,1.24" Margin="10,10,0,0" Height="25" Width="80"/>
+        <Button x:Name="setting" Content="配置" Height="25" Margin="0,40,95,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" Click="Button_Click_Setting"/>
+
+    </Grid>
+</Window>

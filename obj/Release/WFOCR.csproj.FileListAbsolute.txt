@@ -1,0 +1,16 @@
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\bin\Release\WFOCR.exe.config
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\bin\Release\WFOCR.exe
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\bin\Release\WFOCR.pdb
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\obj\Release\WindowForOCR.g.cs
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\obj\Release\Setting.g.cs
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\obj\Release\App.g.cs
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\obj\Release\WFOCR_MarkupCompile.cache
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\obj\Release\WFOCR_MarkupCompile.lref
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\obj\Release\WindowForOCR.baml
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\obj\Release\Setting.baml
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\obj\Release\WFOCR.g.resources
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\obj\Release\WFOCR.Properties.Resources.resources
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\obj\Release\WFOCR.csproj.GenerateResource.cache
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\obj\Release\WFOCR.csproj.CoreCompileInputs.cache
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\obj\Release\WFOCR.exe
+C:\Users\YLAIE\source\repos\WFOCR\WFOCR\obj\Release\WFOCR.pdb
