@@ -131,15 +131,18 @@ namespace WFOCR
             using (FileStream fs = new FileStream("setting.xml", FileMode.Create))
             {
 
-                SerializableDictionary<string, string> setting = new SerializableDictionary<string, string>();
-                setting["Url"] = tbau.Text;
-                setting["AppCode"] = tbac.Text;
-                setting["AppSecret"] = tbas.Text;
-                setting["AppKey"] = tbak.Text;
-                setting["Mode"] = this.mode;
+                SerializableDictionary<string, string> setting = new SerializableDictionary<string, string>
+                {
+                    ["Url"] = tbau.Text,
+                    ["AppCode"] = tbac.Text,
+                    ["AppSecret"] = tbas.Text,
+                    ["AppKey"] = tbak.Text,
+                    ["Mode"] = this.mode
+                };
 
                 XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
                 xmlFormatter.Serialize(fs, setting);
+                
             }
             this.DialogResult = true;            
         }
