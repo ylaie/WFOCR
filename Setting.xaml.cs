@@ -29,13 +29,14 @@ namespace WFOCR
         {
             InitializeComponent();
 
-            SerializableDictionary<string, string> setting = new SerializableDictionary<string, string>();
-
-            setting.Add("Url", "");
-            setting.Add("AppCode", "");
-            setting.Add("AppSecret", "");
-            setting.Add("AppKey", "");
-            setting.Add("Mode", "");
+            SerializableDictionary<string, string> setting = new SerializableDictionary<string, string>
+            {
+                { "Url", "" },
+                { "AppCode", "" },
+                { "AppSecret", "" },
+                { "AppKey", "" },
+                { "Mode", "" }
+            };
 
             if (File.Exists("setting.xml"))
             {

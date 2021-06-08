@@ -37,22 +37,22 @@ namespace WFOCR
 
         private void Button_Click_Output(object sender, RoutedEventArgs e)
         {
-
-            string outputfilelocat = "";
             string nowtime = DateTime.Now.ToString();
 
             nowtime = nowtime.Replace(" ", "");
             nowtime = nowtime.Replace("/", "");
             nowtime = nowtime.Replace(":", "");
 
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "文本文件 (*.txt;)|*.txt;";
-            sfd.FileName ="OCRout" + nowtime + ".txt";
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "文本文件 (*.txt;)|*.txt;",
+                FileName = "OCRout" + nowtime + ".txt"
+            };
             Nullable<bool> sfdresult = sfd.ShowDialog();
             
             if (sfdresult == true)
             {
-                outputfilelocat = sfd.ToString();
+                string outputfilelocat = sfd.ToString();
                 outputfilelocat = outputfilelocat.Remove(0, 51);              
 
 
@@ -69,10 +69,6 @@ namespace WFOCR
 
         private void Button_Click_OpenFile(object sender, RoutedEventArgs e)
         {
-
-            string fileDialog = "";
-            string fileLocat = "";
-
             OpenFileDialog ofd = new OpenFileDialog
             {
                 Filter = "图像文件 (*.png; *.jpg)|*.jpg;*.png"
@@ -81,8 +77,8 @@ namespace WFOCR
            
             if (ofdresult == true)
             {
-                fileDialog = ofd.ToString();
-                fileLocat = fileDialog.Remove(0,51);
+                string fileDialog = ofd.ToString();
+                string fileLocat = fileDialog.Remove(0, 51);
                 Filelocat.Text = fileLocat;
             }
             
@@ -219,10 +215,6 @@ namespace WFOCR
                                         textout.Text = (reader.ReadToEnd());
 
                                     }
-
-
-
-
                                 }
                             }
                         }
@@ -253,7 +245,6 @@ namespace WFOCR
                                         url = set["Url"];
                                         appKey = set["AppKey"];
                                         appSecret = set["AppSecret"];
-
 
 
 
@@ -316,8 +307,6 @@ namespace WFOCR
                                                 textout.Text += (Constants.LF);
 
                                             }
-
-
                                         }
                                     }
                                 }
