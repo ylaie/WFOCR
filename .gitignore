@@ -1,9 +1,2 @@
-setting.xml
-obj/Debug/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
-obj/Debug/App.g.i.cs
-obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-obj/Debug/Setting.g.i.cs
-obj/Debug/WFOCR.csprojAssemblyReference.cache
-obj/Debug/WFOCR_MarkupCompile.i.cache
-obj/Debug/WFOCR_MarkupCompile.i.lref
-obj/Debug/WindowForOCR.g.i.cs
+obj/
+bin/
