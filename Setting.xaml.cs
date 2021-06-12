@@ -43,7 +43,14 @@ namespace WFOCR
                 using (FileStream fs = new FileStream("setting.xml", FileMode.Open))
                 {
                     XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, string>));
-                    setting = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fs);
+                    try
+                    {
+                        setting = (SerializableDictionary<string, string>)xmlFormatter.Deserialize(fs);
+                    }
+                    catch
+                    {
+
+                    }
                 }
                 tbau.Text = setting["Url"];
                 tbac.Text = setting["AppCode"];

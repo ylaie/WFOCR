@@ -287,26 +287,34 @@ namespace WFOCR
                                         signHeader.Add(SystemHeader.X_CA_TIMESTAMP);
 
                                         Uri myUri = new Uri(url);
-                                        using (HttpWebResponse response = HttpUtil.HttpPost(myUri.Scheme + "://" + myUri.Host, myUri.AbsolutePath, appKey, appSecret, 30000, headers, querys, bodys_map, signHeader))
+                                        try
                                         {
-                                            if (response.StatusCode != HttpStatusCode.OK)
+                                            using (HttpWebResponse response = HttpUtil.HttpPost(myUri.Scheme + "://" + myUri.Host, myUri.AbsolutePath, appKey, appSecret, 30000, headers, querys, bodys_map, signHeader))
                                             {
-                                                textout.Text = ("http error code: " + response.StatusCode);
-                                                textout.Text += ("error in header: " + response.GetResponseHeader("X-Ca-Error-Message"));
-                                                textout.Text += ("error in body: ");
-                                                Stream st = response.GetResponseStream();
-                                                StreamReader reader = new StreamReader(st, Encoding.GetEncoding("utf-8"));
-                                                textout.Text += (reader.ReadToEnd());
-                                            }
-                                            else
-                                            {
+                                                if (response.StatusCode != HttpStatusCode.OK)
+                                                {
+                                                    textout.Text = ("http error code: " + response.StatusCode);
+                                                    textout.Text += ("error in header: " + response.GetResponseHeader("X-Ca-Error-Message"));
+                                                    textout.Text += "error in body: ";
+                                                    Stream st = response.GetResponseStream();
+                                                    StreamReader reader = new StreamReader(st, Encoding.GetEncoding("utf-8"));
+                                                    textout.Text += (reader.ReadToEnd());
+                                                }
+                                                else
+                                                {
 
-                                                Stream st = response.GetResponseStream();
-                                                StreamReader reader = new StreamReader(st, Encoding.GetEncoding("utf-8"));
-                                                textout.Text = (reader.ReadToEnd());
-                                                textout.Text += (Constants.LF);
+                                                    Stream st = response.GetResponseStream();
+                                                    StreamReader reader = new StreamReader(st, Encoding.GetEncoding("utf-8"));
+                                                    textout.Text = (reader.ReadToEnd());
+                                                    textout.Text += (Constants.LF);
 
+                                                }
                                             }
+                                        }
+                                        catch(WebException ex)
+                                        {
+                                            MessageBox.Show(ex.ToString());
+                                            MessageBox.Show("ApiUrl错误,请重新填写Url");
                                         }
                                     }
                                 }

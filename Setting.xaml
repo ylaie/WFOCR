@@ -7,22 +7,19 @@
         mc:Ignorable="d"
         Title="配置" Height="310" Width="600" MaxHeight="310" MaxWidth="600" MinHeight="310" MinWidth="600" ResizeMode="NoResize">
     <Grid>
-        <CheckBox Name= "cbac" Content="AppCode" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="80" Checked="AppCode_Checked" Unchecked="AppCode_Unchecked" />
-        <CheckBox Name="cbak"  Content="AppKey" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Checked="AppKey_Checked" Unchecked="AppKey_Unchecked"/>
         <Label Content="ApiUrl:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" Height="25"/>
         <TextBox Name="tbau" Height="25" Margin="90,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox Name="tbac" Height="25" Margin="90,90,10,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" Background ="Silver"/>
+
+        <CheckBox Name= "cbac" Content="AppCode" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Checked="AppCode_Checked" Unchecked="AppCode_Unchecked" />
         <Label Content="AppCode:" HorizontalAlignment="Left" Height="25" Margin="10,90,0,0" VerticalAlignment="Top" Width="80"/>
-        <Border BorderBrush="#FF999999" BorderThickness="1" Height="25" Margin="10,10,10,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Border BorderBrush="#FF999999" BorderThickness="1" Height="25" Margin="10,90,10,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Label Content="AppSecret:" HorizontalAlignment="Left" Margin="10,170.098,0,0" VerticalAlignment="Top" Width="80" Height="25"/>
+        <TextBox Name="tbac" Height="25" Margin="90,90,10,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" Background ="Silver"/>
+
+        <CheckBox Name="cbak"  Content="AppKey" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Checked="AppKey_Checked" Unchecked="AppKey_Unchecked"/>
+        <Label Content="AppSecret:" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Width="80" Height="25"/>
+        <TextBox Name="tbas" Margin="90,170,10,0" TextWrapping="Wrap" IsEnabled="False" Background="Silver" Height="25" VerticalAlignment="Top"/>
         <Label Content="AppKey:" HorizontalAlignment="Left" Height="25" Margin="10,200,0,0" VerticalAlignment="Top" Width="80"/>
-        <Border BorderBrush="#FF999999" BorderThickness="1" Margin="90,200,10,0" Height="25" VerticalAlignment="Top">
-            <TextBox Name="tbak" Margin="-1" TextWrapping="Wrap" Height="25" IsEnabled="False" Background="Silver"/>
-        </Border>
-        <Border BorderBrush="#FF999999" BorderThickness="1" Height="25" Margin="90,170,10,0" VerticalAlignment="Top">
-            <TextBox Name="tbas" Margin="-1" TextWrapping="Wrap" Height="25" IsEnabled="False" Background="Silver"/>
-        </Border>
+        <TextBox Name="tbak" Margin="90,200,10,0" TextWrapping="Wrap" Height="25" IsEnabled="False" Background="Silver" VerticalAlignment="Top"/>
+
         <Button Content="取消" Margin="0,240,10,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" Click="Click_Canecl"/>
         <Button Content="确定" Margin="0,240,95,0" HorizontalAlignment="Right" Width="80" Height="25" VerticalAlignment="Top" Click="Click_OK"/>
 
