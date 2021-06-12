@@ -9,10 +9,30 @@
     <Grid>
         <Label Content="文件路径/url:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.667,1.24" Margin="10,10,0,0" Height="25" Width="80"/>
         <TextBox x:Name ="Filelocat" Height="25" Margin="95,10,95,0" Text="" VerticalAlignment="Top" TextChanged="TextBox_Filelocat" />
-        <TextBox x:Name="textout" Margin="10,70,10,10" TextWrapping="Wrap" IsReadOnly="True" Background="Silver" TextChanged="TextBox_Output" Text="ver 0.12f&#xA;&#xA; 阿里云OCR Api :https://tysbgpu.market.alicloudapi.com/api/predict/ocr_general&#xA;&#xA;更新 : Bug修复" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="textout" Margin="10,70,10,10" TextWrapping="Wrap" IsReadOnly="True" Background="Silver" TextChanged="TextBox_Output" Text="ver 0.17f&#xA;&#xA; 阿里云OCR Api :https://tysbgpu.market.alicloudapi.com/api/predict/ocr_general&#xA;&#xA;更新 : 增加了简化导出功能" Grid.ColumnSpan="2"/>
         <Button x:Name="OpenFile" Content="浏览" Margin="0,10,10,0"  HorizontalAlignment="Right" Width="80" Height="25" VerticalAlignment="Top" Click="Button_Click_OpenFile" Grid.ColumnSpan="2"/>
         <Button x:Name="setting" Content="配置" Height="25" Margin="0,40,95,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" Click="Button_Click_Setting"/>
-        <Button x:Name="Start" Content="开始" Margin="0,40,10,0" Click="Button_Click_Start" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" Grid.ColumnSpan="2"/>
+        <Button x:Name="Start" Content="开始" Margin="0,40,10,0" Click="Button_Click_Start" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right" Width="80" Grid.ColumnSpan="2"/>        
+        <Expander Header="" Margin="0,0,44,-13" HorizontalAlignment="Right" Width="80" Height="56" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
+            <Expander.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Expander.RenderTransform>
+            <Button x:Name="SimpOut" Content="简化导出" HorizontalAlignment="Right" Height="25" Margin="-1,0,-25,0" Width="80" RenderTransformOrigin="0.5,0.5" Click="Button_Click_SimpOut">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-58"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+        </Expander>
         <Button x:Name="Output" Content="导出" Margin="0,0,20,20" RenderTransformOrigin="1,-0.021" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Click="Button_Click_Output"/>
     </Grid>
 </Window>

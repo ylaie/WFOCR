@@ -32,7 +32,7 @@ namespace WFOCR
 
         public WindowForOCR()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         private void Button_Click_Output(object sender, RoutedEventArgs e)
@@ -53,18 +53,13 @@ namespace WFOCR
             if (sfdresult == true)
             {
                 string outputfilelocat = sfd.ToString();
-                outputfilelocat = outputfilelocat.Remove(0, 51);              
-
+                outputfilelocat = outputfilelocat.Remove(0, 51);                
 
                 using (StreamWriter sw = new StreamWriter(outputfilelocat))
                 {
-                                                       
-                     sw.WriteLine(textout.Text);
+                    sw.WriteLine(textout.Text);
                 }
-
             }
-
-            
         }
 
         private void Button_Click_OpenFile(object sender, RoutedEventArgs e)
@@ -87,14 +82,14 @@ namespace WFOCR
         private void Button_Click_Start(object sender, RoutedEventArgs e)
         {
             //String
-            String configure = "";
-            String base64 = "";
-            String method = "POST";            
-            String img_file = Filelocat.Text;
-            String appcode = "";
-            String appKey = "";
-            String appSecret = "";
-            String url = "";
+            string configure = "";
+            string base64 = "";
+            string method = "POST";            
+            string img_file = Filelocat.Text;
+            string appcode = "";
+            string appKey = "";
+            string appSecret = "";
+            string url = "";
             //String
 
             if (System.IO.File.Exists("setting.xml"))
@@ -112,7 +107,7 @@ namespace WFOCR
                     if (set["Mode"] == "")
                     {
                         MessageBox.Show("请填写AppCode或AppKey", "警告");
-                    }                    
+                    }
                     else
                     {
                         //ModeAppCode
@@ -133,7 +128,7 @@ namespace WFOCR
                                 {
 
                                     //String
-                                    String querys = "";
+                                    string querys = "";
                                     appcode = set["AppCode"];
                                     url = set["Url"];
                                     //String
@@ -150,7 +145,7 @@ namespace WFOCR
                                         base64 = System.Convert.ToBase64String(contentBytes);
                                     }
 
-                                    String bodys;
+                                    string bodys;
                                     bodys = "{\"image\":\"" + base64 + "\"";
                                     if (configure.Length > 0)
                                     {
@@ -223,8 +218,8 @@ namespace WFOCR
                         else
                         {
                             if (set["AppKey"] == "")
-                            {                                
-                                    MessageBox.Show("请填写AppSecret和AppKey", "警告");                                
+                            {
+                                MessageBox.Show("请填写AppSecret和AppKey", "警告");
                             }
                             else
                             {
@@ -259,7 +254,7 @@ namespace WFOCR
                                             byte[] contentBytes = br.ReadBytes(Convert.ToInt32(fs.Length));
                                             base64 = System.Convert.ToBase64String(contentBytes);
                                         }
-                                        String bodys;
+                                        string bodys;
                                         bodys = "{\"image\":\"" + base64 + "\"";
                                         if (configure.Length > 0)
                                         {
@@ -267,10 +262,10 @@ namespace WFOCR
                                         }
                                         bodys += "}";
 
-                                        Dictionary<String, String> headers = new Dictionary<string, string>();
-                                        Dictionary<String, String> querys = new Dictionary<string, string>();
-                                        Dictionary<String, String> bodys_map = new Dictionary<string, string>();
-                                        List<String> signHeader = new List<String>();
+                                        Dictionary<string, string> headers = new Dictionary<string, string>();
+                                        Dictionary<string, string> querys = new Dictionary<string, string>();
+                                        Dictionary<string, string> bodys_map = new Dictionary<string, string>();
+                                        List<string> signHeader = new List<string>();
 
                                         //设定Content-Type，根据服务器端接受的值来设置
                                         headers.Add(HttpHeader.HTTP_HEADER_CONTENT_TYPE, ContentType.CONTENT_TYPE_JSON);
@@ -314,7 +309,7 @@ namespace WFOCR
                                         catch(WebException ex)
                                         {
                                             MessageBox.Show(ex.ToString());
-                                            MessageBox.Show("ApiUrl错误,请重新填写Url");
+                                            MessageBox.Show("ApiUrl错误,请重新填写Url","错误");
                                         }
                                     }
                                 }
@@ -357,6 +352,78 @@ namespace WFOCR
             setting.ShowDialog();
         }
 
-        
+        private string SimplifyOutput(string input, string start, string end)
+        {
+            Dictionary<int, int> sd = new Dictionary<int, int>();
+
+            int result = input.IndexOf(start);
+
+            if (result >= 0)
+            {
+                int st = 0;
+                int ed = 0;
+
+                while (st > -1)
+                {
+                    st = input.IndexOf(start, st + 1);
+                    ed = input.IndexOf(end, ed + 1);
+                    sd.Add(st, ed);
+                }
+            }
+            foreach (KeyValuePair<int, int> kv in sd )
+            {
+                if (kv.Key != kv.Value)
+                {
+                    string subs = input.Substring(kv.Key, kv.Value - kv.Key);
+                    string space = "";
+                    space = space.PadLeft(subs.Length);
+                    input = input.Replace(subs, space);
+                }
+            }
+
+            input = input.Replace(" ", "");
+            input = input.Remove(0, 60);
+            input = input.Replace("},", "\n");
+            input = input.Replace("}],\"success\":true}", "");
+            string output = input;
+
+            return output;
+        }
+
+        private void Button_Click_SimpOut(object sender, RoutedEventArgs e)
+        {
+            if (textout.Text.StartsWith("{\"request_id\":\""))
+            {
+                string nowtime = DateTime.Now.ToString();
+
+                nowtime = nowtime.Replace(" ", "");
+                nowtime = nowtime.Replace("/", "");
+                nowtime = nowtime.Replace(":", "");
+
+                SaveFileDialog sfd = new SaveFileDialog
+                {
+                    Filter = "文本文件 (*.txt;)|*.txt;",
+                    FileName = "SimpOCRout" + nowtime + ".txt"
+                };
+                Nullable<bool> sfdresult = sfd.ShowDialog();
+
+                if (sfdresult == true)
+                {
+                    string outputfilelocat = sfd.ToString();
+                    outputfilelocat = outputfilelocat.Remove(0, 51);
+
+                    string simo = SimplifyOutput(textout.Text, "{\"rect\":", "\"word\":\"");
+
+                    using (StreamWriter sw = new StreamWriter(outputfilelocat))
+                    {
+                        sw.WriteLine(simo);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("简化导出仅成功输出时可用", "警告");
+            }
+        }
     }
 }
