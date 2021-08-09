@@ -1,3 +1,4 @@
 obj/
 bin/
 WFOCR.csproj.user
+.vscode/
