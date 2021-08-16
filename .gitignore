@@ -2,3 +2,4 @@ obj/
 bin/
 WFOCR.csproj.user
 .vscode/
+setting.xml
